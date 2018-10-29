@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\TelescopeServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
     ],
