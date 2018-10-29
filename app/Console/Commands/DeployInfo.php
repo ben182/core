@@ -54,7 +54,8 @@ class DeployInfo extends Command
         ]);
     }
 
-    protected function trim($string) {
+    protected function trim($string)
+    {
         return trim(preg_replace('/\s+/', ' ', $string));
     }
 
