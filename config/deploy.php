@@ -46,7 +46,7 @@ return [
     'hooks' => [
         // Right before we start deploying.
         'start' => [
-            //
+            'artisan:backup',
         ],
 
         // Code and composer vendors are ready but nothing is built.
@@ -58,9 +58,6 @@ return [
         // Deployment is done but not live yet (before symlink)
         'ready' => [
             'artisan:storage:link',
-            // 'artisan:view:clear',
-            // 'artisan:cache:clear',
-            // 'artisan:config:cache',
             // 'artisan:migrate',
             // 'artisan:horizon:terminate',
             'artisan:clearAllCaches',
@@ -161,6 +158,7 @@ return [
     */
 
     'include' => [
+        'deployrecipes/backup.php',
         'deployrecipes/cache.php',
     ],
 
