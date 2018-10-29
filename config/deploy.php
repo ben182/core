@@ -37,7 +37,7 @@ return [
     | Hooks
     |--------------------------------------------------------------------------
     |
-    | Hooks let you customize your deployments conveniently by pushing tasks 
+    | Hooks let you customize your deployments conveniently by pushing tasks
     | into strategic places of your deployment flow. Each of the official
     | strategies invoke hooks in different ways to implement their logic.
     |
@@ -48,33 +48,35 @@ return [
         'start' => [
             //
         ],
-        
+
         // Code and composer vendors are ready but nothing is built.
         'build' => [
-            'npm:install',
-            'npm:production',
+            // 'npm:install',
+            // 'npm:production',
         ],
-        
+
         // Deployment is done but not live yet (before symlink)
         'ready' => [
             'artisan:storage:link',
-            'artisan:view:clear',
-            'artisan:cache:clear',
-            'artisan:config:cache',
-            'artisan:migrate',
-            'artisan:horizon:terminate',
+            // 'artisan:view:clear',
+            // 'artisan:cache:clear',
+            // 'artisan:config:cache',
+            // 'artisan:migrate',
+            // 'artisan:horizon:terminate',
+            'artisan:clearAllCaches',
+            'artisan:cacheEverything',
         ],
-        
+
         // Deployment is done and live
         'done' => [
-            'fpm:reload',
+            // 'fpm:reload',
         ],
-        
+
         // Deployment succeeded.
         'success' => [
             //
         ],
-        
+
         // Deployment failed.
         'fail' => [
             //
@@ -95,7 +97,21 @@ return [
     'options' => [
         'application' => env('APP_NAME', 'Laravel'),
         'repository' => '',
+        'branch' => 'master',
+
         'php_fpm_service' => 'php7.2-fpm',
+        'git_tty' => true,
+        // 'http_user' => 'www-data',
+
+        'clearCachesCommands' => [
+            'cache:clear',
+            'route:clear',
+            'view:clear',
+        ],
+        'cacheEverythingCommands' => [
+            'route:cache',
+            'view:cache',
+        ],
     ],
 
     /*
@@ -113,6 +129,8 @@ return [
         '192.168.1.1' => [
             'deploy_path' => '/var/www/192.168.1.1',
             'user' => 'root',
+            // 'identityFile' => '/home/vagrant/.ssh_custom/hetzner',
+            // 'port' => 222,
         ],
     ],
 
@@ -136,14 +154,14 @@ return [
     | Include additional Deployer recipes
     |--------------------------------------------------------------------------
     |
-    | Here, you can add any third party recipes to provide additional tasks, 
+    | Here, you can add any third party recipes to provide additional tasks,
     | options and strategies. Therefore, it also allows you to create and
     | include your own recipes to define more complex deployment flows.
     |
     */
 
     'include' => [
-        //
+        'deployrecipes/cache.php',
     ],
 
     /*
