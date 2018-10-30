@@ -28,3 +28,4 @@ Includes a new Laravel 5.7 installation plus
 
 - Backup tasks schedulded through the scheduler
 - A new filesystem s3 driver for backups
+- Stylelint Config
