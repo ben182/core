@@ -26,4 +26,5 @@ Includes a new Laravel 5.7 installation plus
     - Sets the app version in the .env file and sends a new release to bugsnag
     - The current git tag will be used as the current version
 
-In addition backup tasks are schedulded through the scheduler
+- Backup tasks schedulded through the scheduler
+- A new filesystem s3 driver for backups
