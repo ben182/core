@@ -61,6 +61,7 @@ return [
             // 'artisan:migrate',
             // 'artisan:horizon:terminate',
             'artisan:clearAllCaches',
+            'artisan:deployBugsnag',
             'artisan:cacheEverything',
         ],
 
@@ -102,11 +103,13 @@ return [
 
         'clearCachesCommands' => [
             'cache:clear',
-            'route:clear',
+            'config:clear',
+            'route:trans:clear',
             'view:clear',
         ],
         'cacheEverythingCommands' => [
-            'route:cache',
+            'config:cache',
+            'route:trans:cache',
             'view:cache',
         ],
     ],

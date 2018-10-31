@@ -11,7 +11,7 @@ class DeployInfo extends Command
      *
      * @var string
      */
-    protected $signature = 'deploy:infos';
+    protected $signature = 'deploy:infos {url} {version} {hash}';
 
     /**
      * The console command description.
@@ -37,9 +37,9 @@ class DeployInfo extends Command
      */
     public function handle()
     {
-        $sUrl = $this->trim(shell_exec('git config --get remote.origin.url'));
-        $sVersion = $this->trim(shell_exec('git describe --tags --abbrev=0'));
-        $sHash = $this->trim(shell_exec('git log --pretty="%H" -n1 HEAD'));
+        $sUrl = $this->argument('url');
+        $sVersion = $this->argument('version');
+        $sHash = $this->argument('hash');
 
         $this->editEnvKey('APP_VERSION', $sVersion);
         config([
@@ -52,11 +52,6 @@ class DeployInfo extends Command
             '--repository' => $sUrl,
             '--revision' => $sHash,
         ]);
-    }
-
-    protected function trim($string)
-    {
-        return trim(preg_replace('/\s+/', ' ', $string));
     }
 
     protected function editEnvKey($sKey, $sValue)
