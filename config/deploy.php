@@ -58,15 +58,17 @@ return [
         // Deployment is done but not live yet (before symlink)
         'ready' => [
             'artisan:storage:link',
-            // 'artisan:migrate',
-            // 'artisan:horizon:terminate',
             'artisan:clearAllCaches',
-            'artisan:deployBugsnag',
-            'artisan:cacheEverything',
+            'artisan:migrate',
+            'npm:install',
+            'npm:production',
+            // 'artisan:horizon:terminate',
         ],
 
         // Deployment is done and live
         'done' => [
+            'artisan:deployBugsnag',
+            'artisan:cacheEverything',
             // 'fpm:reload',
         ],
 
@@ -112,6 +114,7 @@ return [
             'route:trans:cache',
             'view:cache',
         ],
+        'composer_options' => '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader', // removed --no-dev
     ],
 
     /*
