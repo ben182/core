@@ -71,6 +71,7 @@ return [
             'region' => env('BACKUP_AWS_DEFAULT_REGION'),
             'bucket' => env('BACKUP_AWS_BUCKET'),
             'url' => env('BACKUP_AWS_URL'),
+            'root' => 'backups/',
         ],
 
     ],
