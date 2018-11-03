@@ -59,6 +59,7 @@ return [
         'ready' => [
             'artisan:storage:link',
             'artisan:clearAllCaches',
+            'artisan:envSync',
             'artisan:migrate',
             'npm:install',
             'npm:production',

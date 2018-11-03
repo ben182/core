@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.9 on 2018-10-30 13:04:06.
+ * Generated for Laravel 5.7.9 on 2018-11-03 12:44:40.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14724,7 +14724,7 @@ namespace Sentry\SentryLaravel {
          * @return string 
          * @static 
          */ 
-        public static function cleanup_php_version($extra = '')
+        public static function cleanup_php_version($extra = '-1+ubuntu18.04.1+deb.sury.org+1')
         {
             return \Raven_Client::cleanup_php_version($extra);
         }

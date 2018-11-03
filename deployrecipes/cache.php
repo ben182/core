@@ -28,3 +28,5 @@ task('artisan:deployBugsnag', function () {
 function onlyLetters($string) {
     return trim(preg_replace('/\s+/', ' ', $string));
 }
+
+task('artisan:envSync', artisan('env:sync --no-interaction', ['showOutput']));
