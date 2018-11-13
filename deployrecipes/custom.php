@@ -30,3 +30,4 @@ function onlyLetters($string) {
 }
 
 task('artisan:envSync', artisan('env:sync --no-interaction', ['showOutput']));
+task('artisan:backup', artisan('backup:run --only-db', ['showOutput', 'runInCurrent']));

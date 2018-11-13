@@ -163,8 +163,7 @@ return [
     */
 
     'include' => [
-        'deployrecipes/backup.php',
-        'deployrecipes/cache.php',
+        'deployrecipes/custom.php',
     ],
 
     /*
