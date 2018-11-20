@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "laravel-telescope"
+                "laravel/telescope"
             ]
         }
     },
