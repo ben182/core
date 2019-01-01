@@ -11,7 +11,7 @@ class DeployInfo extends Command
      *
      * @var string
      */
-    protected $signature = 'deploy:infos {url} {version} {hash}';
+    protected $signature = 'deploy:infos {url} {version} {hash} {--bugsnag}';
 
     /**
      * The console command description.
@@ -37,21 +37,25 @@ class DeployInfo extends Command
      */
     public function handle()
     {
-        $sUrl = $this->argument('url');
+        $sUrl     = $this->argument('url');
         $sVersion = $this->argument('version');
-        $sHash = $this->argument('hash');
+        $sHash    = $this->argument('hash');
 
         $this->editEnvKey('APP_VERSION', $sVersion);
-        config([
-            'app.version' => $sVersion,
-            'bugsnag.app_version' => $sVersion,
-        ]);
-        echo 'Set app version to ' . $sVersion . "\n";
 
-        $this->call('bugsnag:deploy', [
-            '--repository' => $sUrl,
-            '--revision' => $sHash,
-        ]);
+        if ($this->option('bugsnag')) {
+            config([
+                'app.version'         => $sVersion,
+                'bugsnag.app_version' => $sVersion,
+            ]);
+
+            $this->call('bugsnag:deploy', [
+                '--repository' => $sUrl,
+                '--revision'   => $sHash,
+            ]);
+        }
+
+        echo 'Set app version to ' . $sVersion . "\n";
     }
 
     protected function editEnvKey($sKey, $sValue)
