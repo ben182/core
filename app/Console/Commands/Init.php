@@ -37,10 +37,6 @@ class Init extends Command
      */
     public function handle()
     {
-        if (str_contains(php_uname('s'), 'Windows')) {
-            return $this->error('Command must be executed on a bash shell');
-        }
-
         if (! file_exists(base_path('.env'))) {
             copy(base_path('.env.example'), base_path('.env'));
         }
