@@ -45,7 +45,7 @@ class Init extends Command
             $this->call('key:generate');
         }
 
-        shell_exec('wget https://gist.githubusercontent.com/YP28/527415377bbaa212467088f85b752136/raw/pre-commit -O .git/hooks/pre-commit');
+        shell_exec('wget https://gist.githubusercontent.com/ben182/14d7393224781764dc5e3315896d6161/raw/00e9b7dfe236fef14898d24a4600911666e504df/pre-commit -O .git/hooks/pre-commit');
         shell_exec('chmod +x .git/hooks/pre-commit');
     }
 }
