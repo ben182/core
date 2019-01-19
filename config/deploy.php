@@ -105,12 +105,12 @@ return [
         'clearCachesCommands' => [
             'cache:clear',
             'config:clear',
-            'route:trans:clear',
+            'route:clear',
             'view:clear',
         ],
         'cacheEverythingCommands' => [
             'config:cache',
-            'route:trans:cache',
+            'route:cache',
             'view:cache',
         ],
         'composer_options' => '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader', // removed --no-dev

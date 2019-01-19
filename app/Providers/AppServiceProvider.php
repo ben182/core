@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }else{
-            $this->app->register(Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class);
+            $this->app->register(\Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class);
         }
     }
 }
